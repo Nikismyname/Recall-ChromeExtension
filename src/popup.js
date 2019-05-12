@@ -8,7 +8,7 @@ if (inProduction) {
 }
 
 function getCurrentUrl(directory) {
-	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+	chrome.tabs.query({'active': true ,currentWindow: true}, function (tabs) {
 		let url = tabs[0].url;
 		if(!url.toUpperCase().includes("YOUTUBE")){
 			alert("You Can Only Add YouTube Videos!");
@@ -25,7 +25,21 @@ function getCurrentUrl(directory) {
 function getRecallTab(url, name, directory){
 	chrome.tabs.query({"url": appUrlSelector}, function (tabs) {
 		let tabId = tabs[0].id;
-		chrome.tabs.sendMessage(tabId, {"message": "recallCreate", "url": url, "name": name, "directory": directory });
+		let shouldOpen = document.getElementById("shouldRedirect").checked;
+		chrome.tabs.sendMessage(tabId,
+			{
+				"message": "recallCreate",
+				"url": url,
+				"name": name,
+				"directory": directory, 
+				"shouldOpen": shouldOpen,
+			});
+		
+		let shouldFocus = document.getElementById("shouldFocus").checked;
+		if (shouldFocus) {
+			var updateProperties = { 'active': true };
+			chrome.tabs.update(tabId, updateProperties, (tab) => { });
+		}
 	});
 };
 

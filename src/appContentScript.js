@@ -5,5 +5,3 @@ chrome.runtime.onMessage.addListener(obj => {
 	}
 	window.postMessage(Object.assign({}, obj, {"message": "recallCreate"}));
 });
-
-alert("App Content Script!");

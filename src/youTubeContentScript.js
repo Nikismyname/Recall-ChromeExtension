@@ -12,5 +12,3 @@ chrome.runtime.onMessage.addListener( function (req, sender, sendResponse) {
 	sendResponse(name);
 	return true;
 });
-
-alert("Youtube Content Script!");
