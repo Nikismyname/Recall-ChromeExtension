@@ -4,11 +4,11 @@ chrome.runtime.onMessage.addListener( function (req, sender, sendResponse) {
 		return;
 	}
 
-	let titles = document.getElementsByClassName("title");
-    var titlesList = Array.prototype.slice.call(titles);
-	let title = titlesList.filter(x=> x.tagName === "H1")[0];
+	let titles = document.getElementsByClassName("_1fHNK");
+	var titlesList = Array.prototype.slice.call(titles);
+	let title = titlesList[0];
 	let name = title.textContent;
 	console.log(name); 
-	sendResponse({ name: name, type: "youtube" });
+	sendResponse({ name: name, type: "vimeo" });
 	return true;
 });

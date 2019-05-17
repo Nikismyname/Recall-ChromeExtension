@@ -18,8 +18,12 @@
 			"js": ["appContentScript.js"]
 	   },
 	   {
-	   	"matches": ["https://www.youtube.com/watch*"],
+	   	"matches": ["https://www.youtube.com/*"],
 			"js": ["youTubeContentScript.js"]
-	   }
+		},
+		{
+			"matches": ["https://vimeo.com/*"],
+			"js": ["vimeoContentScript.js"]
+		}
 	]
 }
